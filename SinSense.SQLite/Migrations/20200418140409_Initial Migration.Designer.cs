@@ -9,7 +9,7 @@ using SinSenseInfastructure;
 namespace SinSense.SQLite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200418074712_Initial Migration")]
+    [Migration("20200418140409_Initial Migration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,17 +20,16 @@ namespace SinSense.SQLite.Migrations
 
             modelBuilder.Entity("SinSenseCore.Entities.Word", b =>
                 {
+                    b.Property<string>("Text")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Language")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Text")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
+                    b.HasKey("Text");
 
                     b.HasIndex("Language");
 
@@ -46,7 +45,13 @@ namespace SinSense.SQLite.Migrations
                     b.Property<Guid>("FromWordId")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("FromWordText")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid>("ToWordId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ToWordText")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Type")
@@ -56,7 +61,11 @@ namespace SinSense.SQLite.Migrations
 
                     b.HasIndex("FromWordId");
 
+                    b.HasIndex("FromWordText");
+
                     b.HasIndex("ToWordId");
+
+                    b.HasIndex("ToWordText");
 
                     b.HasIndex("Type");
 
@@ -67,15 +76,11 @@ namespace SinSense.SQLite.Migrations
                 {
                     b.HasOne("SinSenseCore.Entities.Word", "FromWord")
                         .WithMany("Relations")
-                        .HasForeignKey("FromWordId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FromWordText");
 
                     b.HasOne("SinSenseCore.Entities.Word", "ToWord")
                         .WithMany()
-                        .HasForeignKey("ToWordId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ToWordText");
                 });
 #pragma warning restore 612, 618
         }

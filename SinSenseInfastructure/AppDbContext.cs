@@ -40,9 +40,11 @@ namespace SinSenseInfastructure
 
             // TODO : Db Optimaisations
             modelBuilder.Entity<Word>().HasIndex(w => w.Language);
+            modelBuilder.Entity<Word>().HasKey(w => w.Text);
 
             modelBuilder.Entity<WordRelation>().HasIndex(r => r.Type);
             modelBuilder.Entity<WordRelation>().HasIndex(r => r.FromWordId);
+            modelBuilder.Entity<WordRelation>().HasIndex(r => r.ToWordId);
         }
     }
 }

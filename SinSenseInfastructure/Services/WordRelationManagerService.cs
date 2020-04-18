@@ -57,7 +57,7 @@ namespace SinSenseInfastructure.Services
                 }
                 else
                 {
-                    logger.LogInformation($"Dictionry relation \"{wordRelation.FromWord.Text} -> {wordRelation.ToWord.Text}\" already exists");
+                    // logger.LogInformation($"Dictionry relation \"{wordRelation.FromWord.Text} -> {wordRelation.ToWord.Text}\" already exists");
                     return wordRelationDb;
                 }
             }
