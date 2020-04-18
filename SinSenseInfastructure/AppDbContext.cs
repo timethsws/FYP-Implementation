@@ -7,7 +7,7 @@ namespace SinSenseInfastructure
     /// <summary>
     /// Application Data Context
     /// </summary>
-    public class AppDbContext: DbContext
+    public class AppDbContext : DbContext
     {
         /// <summary>
         /// Initialises a new instance of <see cref="SinSenseInfastructure.AppDbContext"/>
@@ -40,7 +40,7 @@ namespace SinSenseInfastructure
 
             // TODO : Db Optimaisations
             modelBuilder.Entity<Word>().HasIndex(w => w.Language);
-            modelBuilder.Entity<Word>().HasKey(w => w.Text);
+            modelBuilder.Entity<Word>().HasIndex(w => w.Text);
 
             modelBuilder.Entity<WordRelation>().HasIndex(r => r.Type);
             modelBuilder.Entity<WordRelation>().HasIndex(r => r.FromWordId);

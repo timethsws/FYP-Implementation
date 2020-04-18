@@ -26,16 +26,16 @@ namespace SinSenseInfastructure.Services
             {
                 AddWordRelationRecord(wordRelation);
             }
-            if(saveChanges)
-            { 
+            if (saveChanges)
+            {
                 dbContext.SaveChanges();
             }
         }
 
         public WordRelation AddRecord(WordRelation wordRelation, bool saveChanges = true)
         {
-            var word =  AddWordRelationRecord(wordRelation);
-            if(saveChanges)
+            var word = AddWordRelationRecord(wordRelation);
+            if (saveChanges)
             {
                 dbContext.SaveChanges();
             }
@@ -46,11 +46,11 @@ namespace SinSenseInfastructure.Services
         protected WordRelation AddWordRelationRecord(WordRelation wordRelation)
         {
             // Check if there is an exisiting relationship
-            var wordRelationDb = dbContext.WordRelations.FirstOrDefault(wr => wr.FromWordId == wordRelation.FromWordId && wr.ToWordId == wordRelation.ToWordId && wr.Type == wordRelation.Type);
+            var exisits = dbContext.WordRelations.Any(wr => wr.FromWordId == wordRelation.FromWordId && wr.ToWordId == wordRelation.ToWordId && wr.Type == wordRelation.Type);
 
             try
             {
-                if (wordRelationDb == null)
+                if (!exisits)
                 {
                     dbContext.WordRelations.Add(wordRelation);
                     return wordRelation;
@@ -58,7 +58,8 @@ namespace SinSenseInfastructure.Services
                 else
                 {
                     // logger.LogInformation($"Dictionry relation \"{wordRelation.FromWord.Text} -> {wordRelation.ToWord.Text}\" already exists");
-                    return wordRelationDb;
+                    //return dbContext.WordRelations.FirstOrDefault(wr => wr.FromWordId == wordRelation.FromWordId && wr.ToWordId == wordRelation.ToWordId && wr.Type == wordRelation.Type);
+                    return null;
                 }
             }
             catch (Exception ex)

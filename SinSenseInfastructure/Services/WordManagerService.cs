@@ -21,18 +21,20 @@ namespace SinSenseInfastructure.Services
         {
             // TODO Validation
 
-            var wordDb = dbContext.Words.FirstOrDefault(w => w.Text.Equals(word.Text) && w.Language == word.Language);
-            if(wordDb == null)
-            {
-                dbContext.Words.Add(word);
-                if(saveChanges)
-                {
-                    dbContext.SaveChanges();
-                }
-                return word;
-            }
-            logger.LogDebug($"Word {word.Text} is already in the database");
-            return wordDb;
+            // var wordDb = dbContext.Words.FirstOrDefault(w => w.Text.Equals(word.Text) && w.Language == word.Language);
+            // if(wordDb == null)
+            // var exists = dbContext.Words.Any(w => w.Text.Equals(word.Text) && w.Language == word.Language);
+            // if (!exists)
+            // {
+            //     dbContext.Words.Add(word);
+            //     if (saveChanges)
+            //     {
+            //         dbContext.SaveChanges();
+            //     }
+            //     return word;
+            // }
+            // logger.LogDebug($"Word {word.Text} is already in the database");
+            return dbContext.Words.FirstOrDefault(w => w.Text.Equals(word.Text) && w.Language == word.Language);
         }
     }
 }

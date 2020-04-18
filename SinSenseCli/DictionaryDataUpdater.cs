@@ -39,12 +39,8 @@ namespace SinSenseCli
                 throw new ApplicationException($"File not found {fullPath}");
             }
             var lineCount = File.ReadLines(fullPath).Count();
-            var lines_per_percentage_point = lineCount / 1000;
-            var old_percentage = 0.00;
-            var next_limit = lines_per_percentage_point;
             var count = 0;
-
-            logger.LogInformation($"{old_percentage}% Completed {count}/{lineCount}");
+            var startTime = DateTime.UtcNow;
             using (var file = new StreamReader(fullPath))
             {
 
@@ -75,7 +71,7 @@ namespace SinSenseCli
                         Text = sinhalaWordStr
                     };
 
-                    wordManager.AddWord(sinhalaWord);
+                    wordManager.AddWord(sinhalaWord, false);
 
                     foreach (var str_en in englishWordStrs)
                     {
@@ -85,7 +81,7 @@ namespace SinSenseCli
                             Text = str_en
                         };
 
-                        wordManager.AddWord(word);
+                        wordManager.AddWord(word, false);
 
                         var relations = new List<WordRelation>
                         {
@@ -106,17 +102,19 @@ namespace SinSenseCli
                             }
                         };
 
-                        wordRelationManager.AddRecords(relations, saveChanges: true);
+                        wordRelationManager.AddRecords(relations, saveChanges: false);
                     }
 
-                    if (count > next_limit)
+                    if (count % 50 == 0)
                     {
-                        next_limit += lines_per_percentage_point;
-                        old_percentage += 0.1;
-                        logger.LogInformation($"{old_percentage}% Completed {count}/{lineCount}");
+                        var duration = DateTime.UtcNow - startTime;
+                        startTime = DateTime.UtcNow;
+                        dbContext.SaveChanges();
+                        logger.LogInformation($"{count}/{lineCount} : {count} recored imported in {duration.ToReadableString()}");
                     }
                 }
             }
+
 
         }
     }
