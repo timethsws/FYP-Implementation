@@ -1203,23 +1203,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/timx/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/home/timx/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseWeb/SinSenseWeb.csproj",
+      "projectUniqueName": "/home/timx/Workspace/FYP-Implementation/SinSenseWeb/SinSenseWeb.csproj",
       "projectName": "SinSenseWeb",
-      "projectPath": "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseWeb/SinSenseWeb.csproj",
-      "packagesPath": "/Users/timx/.nuget/packages/",
-      "outputPath": "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseWeb/obj/",
+      "projectPath": "/home/timx/Workspace/FYP-Implementation/SinSenseWeb/SinSenseWeb.csproj",
+      "packagesPath": "/home/timx/.nuget/packages/",
+      "outputPath": "/home/timx/Workspace/FYP-Implementation/SinSenseWeb/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/timx/.config/NuGet/NuGet.Config"
+        "/home/timx/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -1230,14 +1230,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/SinSense.SQLite.csproj": {
-              "projectPath": "/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/SinSense.SQLite.csproj"
+            "/home/timx/Workspace/FYP-Implementation/SinSense.SQLite/SinSense.SQLite.csproj": {
+              "projectPath": "/home/timx/Workspace/FYP-Implementation/SinSense.SQLite/SinSense.SQLite.csproj"
             },
-            "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/SinSenseCore.csproj": {
-              "projectPath": "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/SinSenseCore.csproj"
+            "/home/timx/Workspace/FYP-Implementation/SinSenseCore/SinSenseCore.csproj": {
+              "projectPath": "/home/timx/Workspace/FYP-Implementation/SinSenseCore/SinSenseCore.csproj"
             },
-            "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/SinSenseInfastructure.csproj": {
-              "projectPath": "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/SinSenseInfastructure.csproj"
+            "/home/timx/Workspace/FYP-Implementation/SinSenseInfastructure/SinSenseInfastructure.csproj": {
+              "projectPath": "/home/timx/Workspace/FYP-Implementation/SinSenseInfastructure/SinSenseInfastructure.csproj"
             }
           }
         }
@@ -1280,7 +1280,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
       }
     }
   }

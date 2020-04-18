@@ -14,10 +14,10 @@ namespace SinSenseCli
         private ILogger logger;
         private IServiceProvider serviceProvider;
 
-        [Argument(0, Description = "Provider to execute (asic|acra|test)")]
+        [Argument(0, Description = "Provider to execute (D - Dictionary M - Morphological Analyser)")]
         public static string Provider { get; set; }
 
-        [Argument(1, Description = "Action to perform (update|import)")]
+        [Argument(1, Description = "Action to perform (update)")]
         public static string Action { get; set; }
 
         [Argument(2, Description = "Paramater (if any)")]
@@ -34,9 +34,11 @@ namespace SinSenseCli
         private void Startup()
         {
             serviceProvider = new ServiceCollection()
-            .AddLogging(opt => {
+            .AddLogging(opt =>
+            {
                 opt.AddConfiguration(appConfiguration.GetSection("Logging"));
-                opt.AddConsole(); }
+                opt.AddConsole();
+            }
             )
             // Configure DB contextx
             .AddDbContext<AppDbContext>(options => appConfiguration.ConfigureDbContext(options, "DefaultDb"))
@@ -70,7 +72,8 @@ namespace SinSenseCli
                 //{
                 Provider = "D";
                 Action = "U";
-                Parameter = "../../../../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt";
+                // Parameter = "../../../../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt"; // Using visual studio
+                Parameter = "../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt"; // Using visual studio code
                 //Parameter2 = "ACT";
                 // Provider = "data";
                 // Action = "migrate";
@@ -84,7 +87,7 @@ namespace SinSenseCli
                 else
                 {
                     Startup();
-                    switch(Provider)
+                    switch (Provider)
                     {
                         case "D":
                             var dictionaryService = serviceProvider.GetService<DictionaryDataUpdater>();
@@ -101,7 +104,7 @@ namespace SinSenseCli
                         default:
                             logger.LogError($"Invalid provider : {Provider}");
                             break;
-                            
+
                     }
 
                     // TODO :  Process Command

@@ -1480,23 +1480,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/timx/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/home/timx/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/SinSense.SQLite.csproj",
+      "projectUniqueName": "/home/timx/Workspace/FYP-Implementation/SinSense.SQLite/SinSense.SQLite.csproj",
       "projectName": "SinSense.SQLite",
-      "projectPath": "/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/SinSense.SQLite.csproj",
-      "packagesPath": "/Users/timx/.nuget/packages/",
-      "outputPath": "/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/obj/",
+      "projectPath": "/home/timx/Workspace/FYP-Implementation/SinSense.SQLite/SinSense.SQLite.csproj",
+      "packagesPath": "/home/timx/.nuget/packages/",
+      "outputPath": "/home/timx/Workspace/FYP-Implementation/SinSense.SQLite/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/timx/.nuget/NuGet/NuGet.Config"
+        "/home/timx/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -1507,8 +1507,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/SinSenseInfastructure.csproj": {
-              "projectPath": "/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/SinSenseInfastructure.csproj"
+            "/home/timx/Workspace/FYP-Implementation/SinSenseInfastructure/SinSenseInfastructure.csproj": {
+              "projectPath": "/home/timx/Workspace/FYP-Implementation/SinSenseInfastructure/SinSenseInfastructure.csproj"
             }
           }
         }
@@ -1543,7 +1543,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
       }
     }
   }
