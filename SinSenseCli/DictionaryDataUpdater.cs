@@ -39,21 +39,35 @@ namespace SinSenseCli
                 throw new ApplicationException($"File not found {fullPath}");
             }
             var lineCount = File.ReadLines(fullPath).Count();
-            var lines_per_percentage_point = lineCount / 100;
-            var old_percentage = 0;
+            var lines_per_percentage_point = lineCount / 1000;
+            var old_percentage = 0.00;
             var next_limit = lines_per_percentage_point;
             var count = 0;
+
+            logger.LogInformation($"{old_percentage}% Completed {count}/{lineCount}");
             using (var file = new StreamReader(fullPath))
             {
 
                 while ((line = file.ReadLine()) != null)
                 {
                     count++;
-                    logger.LogDebug($"Processing Line \n{line.Substring(0, 20)}");
+                    logger.LogDebug($"Processing Line \n{line}");
                     // Sample Line
                     // කර්තෘ: agent | author | composer | doer | maker | redactor
-                    var sinhalaWordStr = line.Split(":")[0].Trim();
-                    var englishWordStrs = line.Split(":")[1].Trim().Split(" | ");
+                    var sinhalaWordStr = "";
+                    var englishWordStrs = new string[0];
+                    if (line.Split("=").Count() < 2)
+                    {
+                        sinhalaWordStr = line.Split(":")[0].Trim();
+                        englishWordStrs = line.Split(":")[1].Trim().Split(" | ");
+                    }
+                    else
+                    {
+                        sinhalaWordStr = line.Split("=")[0].Trim();
+                        englishWordStrs = line.Split("=")[1].Trim().Split(" | ");
+                        sinhalaWordStr = sinhalaWordStr.Split("\t")[1].Trim();
+                    }
+
 
                     var sinhalaWord = new Word
                     {
@@ -95,10 +109,10 @@ namespace SinSenseCli
                         wordRelationManager.AddRecords(relations, saveChanges: true);
                     }
 
-                    if(count > next_limit)
+                    if (count > next_limit)
                     {
                         next_limit += lines_per_percentage_point;
-                        old_percentage++;
+                        old_percentage += 0.1;
                         logger.LogInformation($"{old_percentage}% Completed {count}/{lineCount}");
                     }
                 }
