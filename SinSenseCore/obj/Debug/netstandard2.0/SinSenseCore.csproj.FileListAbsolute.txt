@@ -1,0 +1,9 @@
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/bin/Debug/netstandard2.0/SinSenseCore.deps.json
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/bin/Debug/netstandard2.0/SinSenseCore.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/bin/Debug/netstandard2.0/SinSenseCore.pdb
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/obj/Debug/netstandard2.0/SinSenseCore.csprojAssemblyReference.cache
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/obj/Debug/netstandard2.0/SinSenseCore.AssemblyInfoInputs.cache
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/obj/Debug/netstandard2.0/SinSenseCore.AssemblyInfo.cs
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/obj/Debug/netstandard2.0/SinSenseCore.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/obj/Debug/netstandard2.0/SinSenseCore.pdb
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseCore/obj/Debug/netstandard2.0/SinSenseCore.csproj.CoreCompileInputs.cache

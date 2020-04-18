@@ -1,0 +1,14 @@
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/bin/Debug/netstandard2.0/SinSense.SQLite.deps.json
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/bin/Debug/netstandard2.0/SinSense.SQLite.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/bin/Debug/netstandard2.0/SinSense.SQLite.pdb
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/obj/Debug/netstandard2.0/SinSense.SQLite.csprojAssemblyReference.cache
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/obj/Debug/netstandard2.0/SinSense.SQLite.csproj.CoreCompileInputs.cache
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/obj/Debug/netstandard2.0/SinSense.SQLite.AssemblyInfoInputs.cache
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/obj/Debug/netstandard2.0/SinSense.SQLite.AssemblyInfo.cs
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/obj/Debug/netstandard2.0/SinSense.SQLite.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/obj/Debug/netstandard2.0/SinSense.SQLite.pdb
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/bin/Debug/netstandard2.0/SinSenseCore.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/bin/Debug/netstandard2.0/SinSenseInfastructure.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/bin/Debug/netstandard2.0/SinSenseInfastructure.pdb
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/bin/Debug/netstandard2.0/SinSenseCore.pdb
+/Users/timx/Documents/Projects/FYP/SinSense/SinSense.SQLite/obj/Debug/netstandard2.0/SinSense.SQLite.csproj.CopyComplete

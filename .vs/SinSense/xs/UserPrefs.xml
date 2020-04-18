@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{FA70181E-992A-4A45-BE84-C5B46841A5E0}|Default" MonoDevelop.Ide.FileNesting.Enabled="False">
+  <MonoDevelop.Ide.ItemProperties.SinSenseWeb PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SinSenseInfastructure/Services/WordManagerService.cs">
+    <Files>
+      <File FileName="SinSenseInfastructure/DbContextHelper.cs" Line="22" Column="1" />
+      <File FileName="SinSenseCli/appsettings.json" Line="5" Column="11" />
+      <File FileName="SinSenseCli/Program.cs" Line="43" Column="50" />
+      <File FileName="SinSenseCli/DictionaryDataUpdater.cs" Line="11" Column="52" />
+      <File FileName="SinSenseInfastructure/Services/ManageDictionaryService.cs" Line="21" Column="10" />
+      <File FileName="SinSenseInfastructure/Services/WordManagerService.cs" Line="8" Column="37" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SinSense" expanded="True">
+            <Node name="SinSenseCli" expanded="True" />
+            <Node name="SinSenseInfastructure" expanded="True">
+              <Node name="Services" expanded="True">
+                <Node name="WordManagerService.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="SinSenseWeb" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.SinSenseCli PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

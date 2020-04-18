@@ -1,0 +1,11 @@
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/bin/Debug/netstandard2.0/SinSenseInfastructure.deps.json
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/bin/Debug/netstandard2.0/SinSenseInfastructure.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/bin/Debug/netstandard2.0/SinSenseInfastructure.pdb
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/bin/Debug/netstandard2.0/SinSenseCore.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/bin/Debug/netstandard2.0/SinSenseCore.pdb
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/obj/Debug/netstandard2.0/SinSenseInfastructure.csprojAssemblyReference.cache
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/obj/Debug/netstandard2.0/SinSenseInfastructure.AssemblyInfoInputs.cache
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/obj/Debug/netstandard2.0/SinSenseInfastructure.AssemblyInfo.cs
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/obj/Debug/netstandard2.0/SinSenseInfastructure.csproj.CopyComplete
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/obj/Debug/netstandard2.0/SinSenseInfastructure.dll
+/Users/timx/Documents/Projects/FYP/SinSense/SinSenseInfastructure/obj/Debug/netstandard2.0/SinSenseInfastructure.pdb
