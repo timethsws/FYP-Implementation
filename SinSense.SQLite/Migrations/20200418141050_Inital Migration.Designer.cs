@@ -9,8 +9,8 @@ using SinSenseInfastructure;
 namespace SinSense.SQLite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200418140409_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20200418141050_Inital Migration")]
+    partial class InitalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
