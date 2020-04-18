@@ -43,6 +43,7 @@ namespace SinSenseCli
             .AddScoped<WordRelationManagerService>()
             .AddScoped<WordManagerService>()
             .AddScoped<DictionaryDataUpdater>()
+            .AddScoped<MorphDataUpdater>()
             // Builds the service provider
             .BuildServiceProvider();
 
@@ -68,9 +69,10 @@ namespace SinSenseCli
                 // DEBUG: Following section is only for development testing. Please comment
                 //if (environmentName == "Development")
                 //{
-                Provider = "D";
+                Provider = "M";
                 Action = "U";
-                Parameter = "../../../../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt";
+                //Parameter = "../../../../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt";
+                Parameter = "../../../../Data/SinhalaMorphs/lemma-dataset.txt";
                 //Parameter2 = "ACT";
                 // Provider = "data";
                 // Action = "migrate";
@@ -92,6 +94,18 @@ namespace SinSenseCli
                             {
                                 case "U":
                                     dictionaryService.UpdateFromFile(Parameter);
+                                    break;
+                                default:
+                                    logger.LogError($"Invalid action : {Action}");
+                                    break;
+                            }
+                            break;
+                        case "M":
+                            var morphDataService = serviceProvider.GetService<MorphDataUpdater>();
+                            switch(Action)
+                            {
+                                case "U":
+                                    morphDataService.UpdateFromFile(Parameter);
                                     break;
                                 default:
                                     logger.LogError($"Invalid action : {Action}");

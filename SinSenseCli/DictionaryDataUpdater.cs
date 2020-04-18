@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Microsoft.Extensions.Logging;
 using SinSenseCore.Entities;
 using SinSenseInfastructure;
@@ -7,7 +9,7 @@ using SinSenseInfastructure.Services;
 
 namespace SinSenseCli
 {
-    public class DictionaryDataUpdater 
+    public class DictionaryDataUpdater
     {
         private readonly WordRelationManagerService wordRelationManager;
         private readonly WordManagerService wordManager;
@@ -27,16 +29,27 @@ namespace SinSenseCli
 
         public void UpdateFromFile(string filepath)
         {
-
-            logger.LogInformation("Start updating Dictionary");
             string line = string.Empty;
+            logger.LogInformation("Start updating Dictionary");
+
+            // Validate if the file exists
             var fullPath = Path.GetFullPath(filepath);
+            if (!File.Exists(fullPath))
+            {
+                throw new ApplicationException($"File not found {fullPath}");
+            }
+            var lineCount = File.ReadLines(fullPath).Count();
+            var lines_per_percentage_point = lineCount / 100;
+            var old_percentage = 0;
+            var next_limit = lines_per_percentage_point;
+            var count = 0;
             using (var file = new StreamReader(fullPath))
             {
 
                 while ((line = file.ReadLine()) != null)
                 {
-                    logger.LogInformation($"Processing Line \n{line}");
+                    count++;
+                    logger.LogDebug($"Processing Line \n{line.Substring(0, 20)}");
                     // Sample Line
                     // කර්තෘ: agent | author | composer | doer | maker | redactor
                     var sinhalaWordStr = line.Split(":")[0].Trim();
@@ -60,25 +73,34 @@ namespace SinSenseCli
 
                         wordManager.AddWord(word);
 
-                        var relationOne = new WordRelation
+                        var relations = new List<WordRelation>
                         {
-                            FromWord = sinhalaWord,
-                            FromWordId = sinhalaWord.Id,
-                            ToWord = word,
-                            ToWordId = word.Id,
-                            Type = RelationType.Dictionary
+                            new WordRelation
+                            {
+                                FromWord = sinhalaWord,
+                                FromWordId = sinhalaWord.Id,
+                                ToWord = word,
+                                ToWordId = word.Id,
+                                Type = RelationType.Dictionary
+                            }, new WordRelation
+                            {
+                                FromWord = word,
+                                FromWordId = word.Id,
+                                ToWord = sinhalaWord,
+                                ToWordId = sinhalaWord.Id,
+                                Type = RelationType.Dictionary
+                            }
                         };
 
-                        var relationTwo = new WordRelation
-                        {
-                            FromWord = word,
-                            FromWordId = word.Id,
-                            ToWord = sinhalaWord,
-                            ToWordId = sinhalaWord.Id,
-                            Type = RelationType.Dictionary
-                        };
+                        wordRelationManager.AddRecords(relations, saveChanges: true);
                     }
 
+                    if(count > next_limit)
+                    {
+                        next_limit += lines_per_percentage_point;
+                        old_percentage++;
+                        logger.LogInformation($"{old_percentage}% Completed {count}/{lineCount}");
+                    }
                 }
             }
 

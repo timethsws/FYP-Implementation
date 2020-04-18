@@ -17,7 +17,7 @@ namespace SinSenseInfastructure.Services
             this.logger = logger;
         }
 
-        public Word AddWord(Word word)
+        public Word AddWord(Word word, bool saveChanges = true)
         {
             // TODO Validation
 
@@ -25,7 +25,10 @@ namespace SinSenseInfastructure.Services
             if(wordDb == null)
             {
                 dbContext.Words.Add(word);
-                dbContext.SaveChanges();
+                if(saveChanges)
+                {
+                    dbContext.SaveChanges();
+                }
                 return word;
             }
             logger.LogDebug($"Word {word.Text} is already in the database");
