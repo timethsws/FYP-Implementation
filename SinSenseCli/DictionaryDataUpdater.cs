@@ -114,8 +114,6 @@ namespace SinSenseCli
                     }
                 }
             }
-
-
         }
     }
 }
