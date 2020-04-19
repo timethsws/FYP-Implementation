@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using SinSenseCore.Entities;
+using SinSenseInfastructure;
 using SinSenseInfastructure.Services;
 
 namespace SinSenseCli
@@ -13,14 +14,17 @@ namespace SinSenseCli
         private readonly WordManagerService wordManager;
         private readonly WordRelationManagerService wordRelationManager;
         private readonly ILogger<MorphDataUpdater> logger;
+        private readonly AppDbContext dbContext;
 
         public MorphDataUpdater(WordManagerService wordManager,
+            AppDbContext dbContext,
             WordRelationManagerService wordRelationManager,
             ILogger<MorphDataUpdater> logger)
         {
             this.wordManager = wordManager;
             this.wordRelationManager = wordRelationManager;
             this.logger = logger;
+            this.dbContext = dbContext;
         }
 
         public void UpdateFromFile(string filepath)
@@ -37,15 +41,15 @@ namespace SinSenseCli
 
             // For Information purposes
             var lineCount = File.ReadLines(fullPath).Count();
-            var lines_per_percentage_point = lineCount / 1000;
-            var old_percentage = 0.0;
-            var next_limit = lines_per_percentage_point;
             var count = 0;
-
+            var startTime = DateTime.UtcNow;
+            logger.LogInformation($"Completed {count}/{lineCount}");
             using (var file = new StreamReader(fullPath))
             {
                 while ((line = file.ReadLine()) != null)
                 {
+                    count ++;
+
                     logger.LogDebug($"Processing Line \n{line.Substring(0,20)}");
                     // 22	ෆැරැන්සියම්	ෆැරැන්සියම්	ෆැරැන්සියම්	ෆැරැන්සියම්	ෆැරැන්සියම්ුත්	ෆැරැන්සියම්ුත්	ෆැරැන්සියම්ුයි	ෆැරැන්සියම්ුයි	ෆැරැන්සියම්වලින්	...
                     var splitted = line.Split("\t", 4);
@@ -64,56 +68,69 @@ namespace SinSenseCli
                         Text = str_stem,
                     };
 
-                    wordManager.AddWord(lemma, saveChanges: false);
-                    wordManager.AddWord(stem, saveChanges: false);
+                    lemma = wordManager.AddWord(lemma, saveChanges: false);
+                    stem = wordManager.AddWord(stem, saveChanges: false);
 
                     List<WordRelation> relations = new List<WordRelation>
                     {
                         new WordRelation
                         {
                             FromWord = lemma,
+                            FromWordId = lemma.Id,
                             ToWord = stem,
+                            ToWordId = stem.Id,
                             Type = RelationType.Stem
                         },
                         new WordRelation
                         {
                             FromWord = lemma,
                             ToWord = lemma,
+                            FromWordId = lemma.Id,
+                            ToWordId = lemma.Id,
                             Type = RelationType.Lemma
                         },
                         new WordRelation
                         {
                             FromWord = stem,
                             ToWord = stem,
+                            FromWordId = stem.Id,
+                            ToWordId = stem.Id,
                             Type = RelationType.Stem
                         },
                         new WordRelation
                         {
                             FromWord = stem,
                             ToWord = lemma,
+                            FromWordId = stem.Id,
+                            ToWordId = lemma.Id,
                             Type = RelationType.Lemma
                         },
                     };
 
-                    wordRelationManager.AddRecords(relations, saveChanges: true);
+                    wordRelationManager.AddRecords(relations, saveChanges: false);
 
                     var str_morph_list = splitted[3].Split("\t");
                     foreach (var str_word in str_morph_list)
                     {
                         //word = self.add_new_word(word = word_str, language = "si")
-                        var word = wordManager.AddWord(new Word { Language = Language.Sinhala, Text = str_word }, saveChanges: false);
+                        var word = new Word { Language = Language.Sinhala, Text = str_word };
+                        word = wordManager.AddWord(word, saveChanges: false);
                         List<WordRelation> new_relations = new List<WordRelation>
                         {
                             new WordRelation
                             {
                                 FromWord = word,
                                 ToWord = lemma,
+                                FromWordId = word.Id,
+                                ToWordId = lemma.Id,
                                 Type = RelationType.Lemma
                             },
                             new WordRelation
                             {
                                 FromWord = word,
                                 ToWord = stem,
+                                FromWordId = word.Id,
+                                ToWordId = stem.Id,
                                 Type = RelationType.Stem
                             }
                         };
@@ -121,11 +138,12 @@ namespace SinSenseCli
                         wordRelationManager.AddRecords(new_relations, saveChanges: true);
                     }
 
-                    if (count > next_limit)
+                    if (count %10 == 0)
                     {
-                        next_limit += lines_per_percentage_point;
-                        old_percentage+=0.1;
-                        logger.LogInformation($"{old_percentage}% Completed {count}/{lineCount}");
+                        var duration = DateTime.UtcNow - startTime;
+                        startTime = DateTime.UtcNow;
+                        // dbContext.SaveChanges();
+                        logger.LogInformation($"{count}/{lineCount} : {count} recored imported in {duration.ToReadableString()}");
                     }
                 }
             }

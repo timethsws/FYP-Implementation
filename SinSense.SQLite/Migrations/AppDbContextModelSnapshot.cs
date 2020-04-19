@@ -30,9 +30,8 @@ namespace SinSense.SQLite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Language");
-
-                    b.HasIndex("Text");
+                    b.HasIndex("Language", "Text")
+                        .IsUnique();
 
                     b.ToTable("Words");
                 });
@@ -59,6 +58,9 @@ namespace SinSense.SQLite.Migrations
                     b.HasIndex("ToWordId");
 
                     b.HasIndex("Type");
+
+                    b.HasIndex("Type", "FromWordId", "ToWordId")
+                        .IsUnique();
 
                     b.ToTable("WordRelations");
                 });

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SinSense.SQLite.Migrations
 {
-    public partial class InitalMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,14 +62,16 @@ namespace SinSense.SQLite.Migrations
                 column: "Type");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Words_Language",
-                table: "Words",
-                column: "Language");
+                name: "IX_WordRelations_Type_FromWordId_ToWordId",
+                table: "WordRelations",
+                columns: new[] { "Type", "FromWordId", "ToWordId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Words_Text",
+                name: "IX_Words_Language_Text",
                 table: "Words",
-                column: "Text");
+                columns: new[] { "Language", "Text" },
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

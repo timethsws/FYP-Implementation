@@ -73,8 +73,8 @@ namespace SinSenseCli
                 //{
                 // Provider = "M";
                 // Action = "U";
-                // //Parameter = "../../../../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt";
-                // Parameter = "../../../../Data/SinhalaMorphs/lemma-dataset.txt";
+                // // //Parameter = "../../../../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt";
+                // Parameter = "../Data/SinhalaMorphs/lemma-dataset.txt";
                 // Parameter = "../../../../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt"; // Using visual studio
                 // Parameter = "../Data/Dictionary/2020-01-25 09:32:43.244059_found-words.txt"; // Using visual studio code
                 //Parameter2 = "ACT";

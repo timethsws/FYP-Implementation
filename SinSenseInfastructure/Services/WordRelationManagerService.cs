@@ -25,6 +25,7 @@ namespace SinSenseInfastructure.Services
             foreach (var wordRelation in wordRelations)
             {
                 AddWordRelationRecord(wordRelation);
+                // dbContext.SaveChanges();
             }
             if (saveChanges)
             {
@@ -47,17 +48,17 @@ namespace SinSenseInfastructure.Services
         {
             // Check if there is an exisiting relationship
             var exisits = dbContext.WordRelations.Any(wr => wr.FromWordId == wordRelation.FromWordId && wr.ToWordId == wordRelation.ToWordId && wr.Type == wordRelation.Type);
-
             try
             {
                 if (!exisits)
                 {
+                    logger.LogDebug($"Dictionry relation \"{wordRelation.FromWord.Text} -> {wordRelation.ToWord.Text}\" is new");
                     dbContext.WordRelations.Add(wordRelation);
                     return wordRelation;
                 }
                 else
                 {
-                    // logger.LogInformation($"Dictionry relation \"{wordRelation.FromWord.Text} -> {wordRelation.ToWord.Text}\" already exists");
+                    logger.LogDebug($"Dictionry relation \"{wordRelation.FromWord.Text} -> {wordRelation.ToWord.Text}\" already exists");
                     //return dbContext.WordRelations.FirstOrDefault(wr => wr.FromWordId == wordRelation.FromWordId && wr.ToWordId == wordRelation.ToWordId && wr.Type == wordRelation.Type);
                     return null;
                 }

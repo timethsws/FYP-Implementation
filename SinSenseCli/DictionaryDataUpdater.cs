@@ -64,14 +64,13 @@ namespace SinSenseCli
                         sinhalaWordStr = sinhalaWordStr.Split("\t")[1].Trim();
                     }
 
-
                     var sinhalaWord = new Word
                     {
                         Language = Language.Sinhala,
                         Text = sinhalaWordStr
                     };
 
-                    wordManager.AddWord(sinhalaWord, false);
+                    sinhalaWord = wordManager.AddWord(sinhalaWord, false);
 
                     foreach (var str_en in englishWordStrs)
                     {
@@ -81,7 +80,7 @@ namespace SinSenseCli
                             Text = str_en
                         };
 
-                        wordManager.AddWord(word, false);
+                        word = wordManager.AddWord(word, false);
 
                         var relations = new List<WordRelation>
                         {
@@ -105,7 +104,7 @@ namespace SinSenseCli
                         wordRelationManager.AddRecords(relations, saveChanges: false);
                     }
 
-                    if (count % 50 == 0)
+                    if (count % 1 == 0)
                     {
                         var duration = DateTime.UtcNow - startTime;
                         startTime = DateTime.UtcNow;

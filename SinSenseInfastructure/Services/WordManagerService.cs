@@ -23,18 +23,26 @@ namespace SinSenseInfastructure.Services
 
             // var wordDb = dbContext.Words.FirstOrDefault(w => w.Text.Equals(word.Text) && w.Language == word.Language);
             // if(wordDb == null)
-            // var exists = dbContext.Words.Any(w => w.Text.Equals(word.Text) && w.Language == word.Language);
-            // if (!exists)
-            // {
-            //     dbContext.Words.Add(word);
-            //     if (saveChanges)
-            //     {
-            //         dbContext.SaveChanges();
-            //     }
-            //     return word;
-            // }
-            // logger.LogDebug($"Word {word.Text} is already in the database");
-            return dbContext.Words.FirstOrDefault(w => w.Text.Equals(word.Text) && w.Language == word.Language);
+            var exists = dbContext.Words.Any(w => w.Text.Equals(word.Text) && w.Language == word.Language);
+            if (!exists)
+            {
+                logger.LogDebug($"Word {word.Text} is not in the database");
+                dbContext.Words.Add(word);
+                if (saveChanges)
+                {
+                    dbContext.SaveChanges();
+                }
+            }
+            else{
+                logger.LogDebug($"Word {word.Text} is already in the database");
+                word =  dbContext.Words.FirstOrDefault(w => w.Text.Equals(word.Text) && w.Language == word.Language);
+            }
+            if(word.Id == Guid.Empty)
+            {
+                throw new ApplicationException("Db Errror");
+            }
+
+            return word;
         }
     }
 }

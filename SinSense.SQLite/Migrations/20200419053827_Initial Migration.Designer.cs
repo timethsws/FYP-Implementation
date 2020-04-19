@@ -9,8 +9,8 @@ using SinSenseInfastructure;
 namespace SinSense.SQLite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200418142524_Inital Migration")]
-    partial class InitalMigration
+    [Migration("20200419053827_Initial Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,9 +32,8 @@ namespace SinSense.SQLite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Language");
-
-                    b.HasIndex("Text");
+                    b.HasIndex("Language", "Text")
+                        .IsUnique();
 
                     b.ToTable("Words");
                 });
@@ -61,6 +60,9 @@ namespace SinSense.SQLite.Migrations
                     b.HasIndex("ToWordId");
 
                     b.HasIndex("Type");
+
+                    b.HasIndex("Type", "FromWordId", "ToWordId")
+                        .IsUnique();
 
                     b.ToTable("WordRelations");
                 });
