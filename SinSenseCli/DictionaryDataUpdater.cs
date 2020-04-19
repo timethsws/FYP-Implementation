@@ -82,6 +82,65 @@ namespace SinSenseCli
                         };
 
                         wordManager.AddWord(word, false);
+                    }
+
+                    if (count % 50 == 0)
+                    {
+                        var duration = DateTime.UtcNow - startTime;
+                        startTime = DateTime.UtcNow;
+                        dbContext.SaveChanges();
+                        logger.LogInformation($"{count}/{lineCount} : {count} word records imported in {duration.ToReadableString()}");
+                    }
+                }
+            }
+
+            var finalduration = DateTime.UtcNow - startTime;
+            startTime = DateTime.UtcNow;
+            dbContext.SaveChanges();
+            logger.LogInformation($"{count}/{lineCount} : {count} word records imported in {finalduration.ToReadableString()}");
+
+
+            using (var file = new StreamReader(fullPath))
+            {
+
+                while ((line = file.ReadLine()) != null)
+                {
+                    count++;
+                    logger.LogDebug($"Processing Line \n{line}");
+                    // Sample Line
+                    // කර්තෘ: agent | author | composer | doer | maker | redactor
+                    var sinhalaWordStr = "";
+                    var englishWordStrs = new string[0];
+                    if (line.Split("=").Count() < 2)
+                    {
+                        sinhalaWordStr = line.Split(":")[0].Trim();
+                        englishWordStrs = line.Split(":")[1].Trim().Split(" | ");
+                    }
+                    else
+                    {
+                        sinhalaWordStr = line.Split("=")[0].Trim();
+                        englishWordStrs = line.Split("=")[1].Trim().Split(" | ");
+                        sinhalaWordStr = sinhalaWordStr.Split("\t")[1].Trim();
+                    }
+
+
+                    var sinhalaWord = new Word
+                    {
+                        Language = Language.Sinhala,
+                        Text = sinhalaWordStr
+                    };
+
+                    sinhalaWord = wordManager.GetWord(sinhalaWord);
+
+                    foreach (var str_en in englishWordStrs)
+                    {
+                        var word = new Word
+                        {
+                            Language = Language.English,
+                            Text = str_en
+                        };
+
+                        word = wordManager.GetWord(word);
 
                         var relations = new List<WordRelation>
                         {
@@ -102,7 +161,7 @@ namespace SinSenseCli
                             }
                         };
 
-                        wordRelationManager.AddRecords(relations, saveChanges: false);
+                        wordRelationManager.AddRecords(relations);
                     }
 
                     if (count % 50 == 0)
@@ -110,10 +169,15 @@ namespace SinSenseCli
                         var duration = DateTime.UtcNow - startTime;
                         startTime = DateTime.UtcNow;
                         dbContext.SaveChanges();
-                        logger.LogInformation($"{count}/{lineCount} : {count} recored imported in {duration.ToReadableString()}");
+                        logger.LogInformation($"{count}/{lineCount} : {count} relationship records imported in {duration.ToReadableString()}");
                     }
                 }
             }
+
+            finalduration = DateTime.UtcNow - startTime;
+            startTime = DateTime.UtcNow;
+            dbContext.SaveChanges();
+            logger.LogInformation($"{count}/{lineCount} : {count} word records imported in {finalduration.ToReadableString()}");
         }
     }
 }

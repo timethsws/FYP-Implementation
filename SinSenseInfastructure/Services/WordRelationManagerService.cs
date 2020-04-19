@@ -20,26 +20,19 @@ namespace SinSenseInfastructure.Services
             this.logger = logger;
         }
 
-        public void AddRecords(List<WordRelation> wordRelations, bool saveChanges = true)
+        public void AddRecords(List<WordRelation> wordRelations)
         {
             foreach (var wordRelation in wordRelations)
             {
                 AddWordRelationRecord(wordRelation);
-            }
-            if (saveChanges)
-            {
                 dbContext.SaveChanges();
             }
         }
 
-        public WordRelation AddRecord(WordRelation wordRelation, bool saveChanges = true)
+        public WordRelation AddRecord(WordRelation wordRelation)
         {
             var word = AddWordRelationRecord(wordRelation);
-            if (saveChanges)
-            {
-                dbContext.SaveChanges();
-            }
-
+            dbContext.SaveChanges();
             return word;
         }
 

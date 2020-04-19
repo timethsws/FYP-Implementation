@@ -17,7 +17,7 @@ namespace SinSenseInfastructure.Services
             this.logger = logger;
         }
 
-        public Word AddWord(Word word, bool saveChanges = true)
+        public void AddWord(Word word, bool saveChanges = true)
         {
             // TODO Validation
             logger.LogDebug($"Adding word {word.Text}");
@@ -28,15 +28,26 @@ namespace SinSenseInfastructure.Services
             {
 
                 dbContext.Words.Add(word);
-                if (saveChanges)
-                {
-                    dbContext.SaveChanges();
-                }
-                return word;
+                dbContext.SaveChanges();
+                logger.LogDebug($"Word {word.Text} addd");
+                return;
             }
             logger.LogDebug($"Word {word.Text} is already in the database");
-            return dbContext.Words.FirstOrDefault(w => w.Text.Equals(word.Text) && w.Language == word.Language);
-            // return null;
+        }
+
+        public bool Exists(Word word)
+        {
+            return dbContext.Words.Any(w => w.Text.Equals(word.Text) && w.Language == word.Language);
+        }
+
+        public Word GetWord(Word word)
+        {
+            var wordDb = dbContext.Words.FirstOrDefault(w => w.Text.Equals(word.Text) && w.Language == word.Language);
+            if (wordDb == null || wordDb.Id == Guid.Empty)
+            {
+                throw new ApplicationException("Word Not found");
+            }
+            return wordDb;
         }
     }
 }

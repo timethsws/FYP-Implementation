@@ -39,12 +39,13 @@ namespace SinSenseInfastructure
             modelBuilder.Entity<WordRelation>().HasOne(wr => wr.FromWord).WithMany(w => w.Relations);
 
             // TODO : Db Optimaisations
-            modelBuilder.Entity<Word>().HasIndex(w => w.Language);
+            modelBuilder.Entity<Word>().HasKey(w => w.Id);
+            modelBuilder.Entity<Word>().HasIndex(w => new { w.Language, w.Text }).IsUnique();
             modelBuilder.Entity<Word>().HasIndex(w => w.Text);
 
-            modelBuilder.Entity<WordRelation>().HasIndex(r => r.Type);
+            modelBuilder.Entity<WordRelation>().HasKey(w => w.Id);
+            modelBuilder.Entity<WordRelation>().HasIndex(r => new { r.Type, r.FromWordId, r.ToWordId }).IsUnique();
             modelBuilder.Entity<WordRelation>().HasIndex(r => r.FromWordId);
-            modelBuilder.Entity<WordRelation>().HasIndex(r => r.ToWordId);
         }
     }
 }

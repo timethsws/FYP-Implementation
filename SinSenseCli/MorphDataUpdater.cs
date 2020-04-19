@@ -44,6 +44,8 @@ namespace SinSenseCli
             var count = 0;
 
             var startTime = DateTime.UtcNow;
+
+            List<Word> toAdd = new List<Word>();
             using (var file = new StreamReader(fullPath))
             {
                 while ((line = file.ReadLine()) != null)
@@ -67,61 +69,120 @@ namespace SinSenseCli
                         Text = str_stem,
                     };
 
-                    wordManager.AddWord(lemma, false);
-                    wordManager.AddWord(stem, false);
-
-                    List<WordRelation> relations = new List<WordRelation>
-                    {
-                        new WordRelation
-                        {
-                            FromWord = lemma,
-                            ToWord = stem,
-                            Type = RelationType.Stem
-                        },
-                        new WordRelation
-                        {
-                            FromWord = lemma,
-                            ToWord = lemma,
-                            Type = RelationType.Lemma
-                        },
-                        new WordRelation
-                        {
-                            FromWord = stem,
-                            ToWord = stem,
-                            Type = RelationType.Stem
-                        },
-                        new WordRelation
-                        {
-                            FromWord = stem,
-                            ToWord = lemma,
-                            Type = RelationType.Lemma
-                        },
-                    };
-
-                    wordRelationManager.AddRecords(relations, false);
+                    toAdd = AddWordToWordsList(toAdd, lemma);
+                    toAdd = AddWordToWordsList(toAdd, stem);
+                    // wordManager.AddWord(stem, false);
 
                     var str_morph_list = splitted[3].Split("\t");
                     foreach (var str_word in str_morph_list)
                     {
                         //word = self.add_new_word(word = word_str, language = "si")
-                        var word = wordManager.AddWord(new Word { Language = Language.Sinhala, Text = str_word }, false);
+                        var word = new Word { Language = Language.Sinhala, Text = str_word };
+                        // wordManager.AddWord(word, false);
+                        toAdd = AddWordToWordsList(toAdd, word);
+                    }
+
+                    if (count % 10 == 0)
+                    {
+                        var duration = DateTime.UtcNow - startTime;
+                        startTime = DateTime.UtcNow;
+                        if (toAdd.Any())
+                        {
+                            dbContext.Words.AddRange(toAdd);
+                            dbContext.SaveChanges();
+                        }
+                        logger.LogInformation($"{count}/{lineCount} : {count} word records imported in {duration.ToReadableString()}");
+                    }
+                }
+            }
+            var finalduration = DateTime.UtcNow - startTime;
+            startTime = DateTime.UtcNow;
+            if (toAdd.Any())
+            {
+                dbContext.Words.AddRange(toAdd);
+                dbContext.SaveChanges();
+            }
+            logger.LogInformation($"{count}/{lineCount} : {count} word records imported in {finalduration.ToReadableString()}");
+
+            using (var file = new StreamReader(fullPath))
+            {
+                while ((line = file.ReadLine()) != null)
+                {
+                    count++;
+                    logger.LogDebug($"Processing Line \n{line}");
+                    // 22	ෆැරැන්සියම්	ෆැරැන්සියම්	ෆැරැන්සියම්	ෆැරැන්සියම්	ෆැරැන්සියම්ුත්	ෆැරැන්සියම්ුත්	ෆැරැන්සියම්ුයි	ෆැරැන්සියම්ුයි	ෆැරැන්සියම්වලින්	...
+                    var splitted = line.Split("\t", 4);
+                    var str_lemma = splitted[1];
+                    var str_stem = splitted[2];
+
+                    var lemma = new Word
+                    {
+                        Language = Language.Sinhala,
+                        Text = str_lemma,
+                    };
+
+                    var stem = new Word
+                    {
+                        Language = Language.Sinhala,
+                        Text = str_stem,
+                    };
+
+                    lemma = wordManager.GetWord(lemma);
+                    stem = wordManager.GetWord(stem);
+
+                    List<WordRelation> relations = new List<WordRelation>
+                    {
+                        new WordRelation
+                        {
+                            FromWordId = lemma.Id,
+                            ToWordId = stem.Id,
+                            Type = RelationType.Stem
+                        },
+                        new WordRelation
+                        {
+                            FromWordId = lemma.Id,
+                            ToWordId = lemma.Id,
+                            Type = RelationType.Lemma
+                        },
+                        new WordRelation
+                        {
+                            FromWordId = stem.Id,
+                            ToWordId = stem.Id,
+                            Type = RelationType.Stem
+                        },
+                        new WordRelation
+                        {
+                            FromWordId = stem.Id,
+                            ToWordId = lemma.Id,
+                            Type = RelationType.Lemma
+                        },
+                    };
+
+                    wordRelationManager.AddRecords(relations);
+
+                    var str_morph_list = splitted[3].Split("\t");
+                    foreach (var str_word in str_morph_list)
+                    {
+                        //word = self.add_new_word(word = word_str, language = "si")
+                        var word = new Word { Language = Language.Sinhala, Text = str_word };
+                        word = wordManager.GetWord(word);
                         List<WordRelation> new_relations = new List<WordRelation>
                         {
                             new WordRelation
                             {
-                                FromWord = word,
-                                ToWord = lemma,
+                                FromWordId = word.Id,
+                                ToWordId = lemma.Id,
                                 Type = RelationType.Lemma
                             },
                             new WordRelation
                             {
-                                FromWord = word,
-                                ToWord = stem,
+                                FromWordId = word.Id,
+                                ToWordId = stem.Id,
                                 Type = RelationType.Stem
                             }
                         };
 
-                        wordRelationManager.AddRecords(new_relations, false);
+                        wordRelationManager.AddRecords(new_relations);
                     }
 
                     if (count % 10 == 0)
@@ -129,10 +190,24 @@ namespace SinSenseCli
                         var duration = DateTime.UtcNow - startTime;
                         startTime = DateTime.UtcNow;
                         dbContext.SaveChanges();
-                        logger.LogInformation($"{count}/{lineCount} : {count} recored imported in {duration.ToReadableString()}");
+                        logger.LogInformation($"{count}/{lineCount} : {count} relationship records imported in {duration.ToReadableString()}");
                     }
                 }
             }
+
+            finalduration = DateTime.UtcNow - startTime;
+            startTime = DateTime.UtcNow;
+            dbContext.SaveChanges();
+            logger.LogInformation($"{count}/{lineCount} : {count} word records imported in {finalduration.ToReadableString()}");
+        }
+
+        public List<Word> AddWordToWordsList(List<Word> list, Word word)
+        {
+            if (!wordManager.Exists(word) && !list.Any(w => w.Text.Equals(word.Text) && w.Language == word.Language))
+            {
+                list.Add(word);
+            }
+            return list;
         }
     }
 }
