@@ -27,4 +27,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Sense\" />
+    <Folder Include="Pages\Dictionary\" />
+  </ItemGroup>
 </Project>

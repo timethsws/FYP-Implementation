@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Sinhala Sense Disambiguation AKA Magic</h1>
+        <p>Helps you by disambiguating polysemous sinhala words by identifying their contextual sense or simply some magic :)</p>
+    </div>
+    <div>
+        <form method="post">
+            <div class="form-group">
+                <input name="translate" type="text" class="form-control" id="translate_input" aria-describedby="translate_input_help" placeholder="Enter the Sentence">
+                <small id="translate_input_help" class="form-text text-muted">Enter the text you want to translate</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Do the magic :)</button>
+        </form>
+    </div>
+</div>

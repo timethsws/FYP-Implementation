@@ -4,7 +4,20 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <h2 class="display-6">Havin' truoble with understanding sinhala :(</h2>
+    </div>
+    <div>
+        <form method="post">
+            <div class="form-group">
+                <input name="translate" type="text" class="form-control" id="translate_input" aria-describedby="translate_input_help" placeholder="පරිවර්තනය කිර්‍රමට අවශ්‍යය වාක්‍යය ඇතුලු කරන්න">
+                <small id="translate_input_help" class="form-text text-muted">Enter the text you want to translate</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Translate :)</button>
+        </form>
+        <p> @Model.text</p>
+        <p> @Model.translated</p>
+    </div>
 </div>

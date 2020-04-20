@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SinSenseInfastructure;
+using SinSenseInfastructure.Services;
 
 namespace SinSenseWeb
 {
@@ -26,6 +27,8 @@ namespace SinSenseWeb
         {
             services.AddRazorPages();
             services.AddDbContext<AppDbContext>(options => Configuration.ConfigureDbContext(options, "DefaultDb"));
+            services.AddScoped<SiEnTranslaterService>();
+            services.AddScoped<SinhalaDictionaryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

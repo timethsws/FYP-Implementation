@@ -1,25 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using SinSenseInfastructure.Services;
 
 namespace SinSenseWeb.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly SiEnTranslaterService _translaterService;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        [BindProperty]
+        public String text { get; set; }
+
+        [BindProperty]
+        public string translated { get; set; }
+        public IndexModel(ILogger<IndexModel> logger,SiEnTranslaterService translaterService)
         {
             _logger = logger;
+            _translaterService = translaterService;
         }
 
         public void OnGet()
         {
-
+            text = DateTime.Now.ToLongDateString();
         }
+        public IActionResult OnPost()
+        {
+            //var translate = Request.Form["translate"];
+            //if (!string.IsNullOrWhiteSpace(translate))
+            //{
+            //    translated = _translaterService.Translate(translate);
+            //}
+            //text = $"Translated \"{translate}\"";
+            translated = "turned off for now :(";
+            text = $"We'll be back soon :)";
+            return Page();
+        }
+        
     }
 }
