@@ -13,14 +13,14 @@ namespace SinSenseWeb.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly SiEnTranslaterService _translaterService;
+        private readonly GoogleTranslatorService _translaterService;
 
         [BindProperty]
         public String text { get; set; }
 
         [BindProperty]
         public string translated { get; set; }
-        public IndexModel(ILogger<IndexModel> logger,SiEnTranslaterService translaterService)
+        public IndexModel(ILogger<IndexModel> logger,GoogleTranslatorService translaterService)
         {
             _logger = logger;
             _translaterService = translaterService;

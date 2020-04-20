@@ -19,24 +19,29 @@ namespace SinSenseInfastructure.Services
             this.logger = logger;
         }
 
-        public List<string> GetWords (string strWord)
+        public List<string> GetWords (string word)
         {
-            var wordDb = dbContext.Words
-                .Include(w => w.Relations).ThenInclude(wr => wr.ToWord)
-                .FirstOrDefault(w => w.Text.Equals(strWord));
-            if(wordDb == null)
+            // Check of the word exists in the database
+            if (!dbContext.Words.Any(w => w.Text.Equals(word)))
             {
-                throw new ApplicationException($"Word {strWord} Not Found");
+                return null;
             }
 
-            var dictionaryEntiries = wordDb.Relations?.Where(r => r.Type == RelationType.Dictionary) ?? new List<WordRelation>();
+            // Get the word
+            var wordId = dbContext.Words.Where(w => w.Text.Equals(word)).Select(w => w.Id).FirstOrDefault();
 
-            if(!dictionaryEntiries.Any())
+            // Check if there is relation ships
+            if (!dbContext.WordRelations.Any(wr => wr.FromWordId == wordId && wr.Type == RelationType.Dictionary))
             {
-                throw new ApplicationException($"No dictionary records :)");
+                return null;
             }
 
-            return dictionaryEntiries.Select(d => d.ToWord.Text).ToList();
+            // return the words
+            return dbContext.WordRelations
+                .Include(wr => wr.ToWord)
+                .Where(wr => wr.FromWordId == wordId && wr.Type == RelationType.Dictionary)
+                .Select(wr => wr.ToWord.Text)
+                .ToList();
         }
     }
 }

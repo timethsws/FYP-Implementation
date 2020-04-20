@@ -27,7 +27,7 @@ namespace SinSenseWeb
         {
             services.AddRazorPages();
             services.AddDbContext<AppDbContext>(options => Configuration.ConfigureDbContext(options, "DefaultDb"));
-            services.AddScoped<SiEnTranslaterService>();
+            services.AddScoped<GoogleTranslatorService>();
             services.AddScoped<SinhalaDictionaryService>();
         }
 
