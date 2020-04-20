@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Extensions.Logging;
-using SinSenseCore.Entities;
+using SinSense.Core.Entities;
 
-namespace SinSenseInfastructure.Services
+namespace SinSense.Infastructure.Services
 {
     public class WordManagerService
     {

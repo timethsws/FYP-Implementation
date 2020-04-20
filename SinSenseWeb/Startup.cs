@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SinSenseInfastructure;
-using SinSenseInfastructure.Services;
+using SinSense.Infastructure;
+using SinSense.Infastructure.Services;
 
-namespace SinSenseWeb
+namespace SinSense.Web
 {
     public class Startup
     {

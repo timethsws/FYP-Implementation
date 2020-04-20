@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using SinSenseInfastructure.Services;
+using SinSense.Infastructure.Services;
 
-namespace SinSenseWeb.Pages
+namespace SinSense.Web.Pages
 {
     public class IndexModel : PageModel
     {

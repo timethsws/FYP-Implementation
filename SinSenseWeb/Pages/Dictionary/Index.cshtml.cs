@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using SinSenseInfastructure.Services;
+using SinSense.Infastructure.Services;
 
-namespace SinSenseWeb.Pages.Dictionary
+namespace SinSense.Web.Pages.Dictionary
 {
     public class IndexModel : PageModel
     {

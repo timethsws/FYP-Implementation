@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace SinSenseWeb.Pages
+namespace SinSense.Web.Pages
 {
     public class PrivacyModel : PageModel
     {

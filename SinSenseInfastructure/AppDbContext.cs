@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using SinSenseCore.Entities;
+using SinSense.Core.Entities;
 
-namespace SinSenseInfastructure
+namespace SinSense.Infastructure
 {
     /// <summary>
     /// Application Data Context

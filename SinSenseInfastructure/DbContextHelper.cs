@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SinSenseInfastructure
+namespace SinSense.Infastructure
 {
     using System;
     using Microsoft.EntityFrameworkCore;

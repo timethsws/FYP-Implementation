@@ -3,7 +3,7 @@ using Google.Api.Gax.ResourceNames;
 using Google.Cloud.Translate.V3;
 using Microsoft.Extensions.Configuration;
 
-namespace SinSenseInfastructure.Services
+namespace SinSense.Infastructure.Services
 {
     public class GoogleTranslatorService
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SinSenseCore.Entities
+namespace SinSense.Core.Entities
 {
     public class WordRelation
     {

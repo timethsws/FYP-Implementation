@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
-using SinSenseCore.Entities;
+using SinSense.Core.Entities;
 
-namespace SinSenseInfastructure.Services
+namespace SinSense.Infastructure.Services
 {
     /// <summary>
     /// Service to manage dictionary information

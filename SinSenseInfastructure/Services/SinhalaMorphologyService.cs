@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using SinSenseCore.Entities;
+using Core.Entities;
 
-namespace SinSenseInfastructure.Services
+namespace SinSense.Infastructure.Services
 {
     public class SinhalaMorphologyService
     {

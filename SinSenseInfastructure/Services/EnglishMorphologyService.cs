@@ -5,7 +5,7 @@ using Google.Apis.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace SinSenseInfastructure.Services
+namespace SinSense.Infastructure.Services
 {
     public class EnglishMorphologyService
     {

@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SinSenseInfastructure;
+using SinSense.Infastructure;
 
 namespace SinSense.SQLite.Migrations
 {

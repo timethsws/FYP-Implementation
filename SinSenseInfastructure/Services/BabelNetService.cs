@@ -6,9 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using SinSenseInfastructure.Services.BabelNet;
+using SinSense.Infastructure.Services.BabelNet;
 
-namespace SinSenseInfastructure.Services
+namespace SinSense.Infastructure.Services
 {
     public class BabelNetService
     {

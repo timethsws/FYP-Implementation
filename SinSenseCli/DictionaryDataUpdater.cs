@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Logging;
-using SinSenseCore.Entities;
-using SinSenseInfastructure;
-using SinSenseInfastructure.Services;
+using SinSense.Core.Entities;
+using SinSense.Infastructure;
+using SinSense.Infastructure.Services;
 
-namespace SinSenseCli
+namespace SinSense.Cli
 {
     public class DictionaryDataUpdater
     {

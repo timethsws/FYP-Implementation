@@ -3,10 +3,10 @@ using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SinSenseInfastructure;
-using SinSenseInfastructure.Services;
+using SinSense.Infastructure;
+using SinSense.Infastructure.Services;
 
-namespace SinSenseCli
+namespace SinSense.Cli
 {
     class Program
     {

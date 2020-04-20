@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SinSenseCore.Entities
+namespace SinSense.Core.Entities
 {
     public class Word
     {
