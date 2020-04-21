@@ -10,7 +10,7 @@ namespace SinSense.Core.Models
 
         public string Translation { get; set; }
 
-        List<WordToken> wordSenses { get; set; }
+        public List<WordToken> Tokens { get; set; }
 
     }
 

@@ -23,21 +23,61 @@
     </div>
     <hr/>
     <br/>
-    @if(!string.IsNullOrWhiteSpace(Model.word) && Model.words != null)
+    @if (!string.IsNullOrWhiteSpace(Model.word))
     {
         <div>
             <h1 class="display-5">@Model.word</h1>
-            <p>
-                @foreach(var resultWord in Model.words)
-                {
-                    <a href="/Dictionary?q=@resultWord"> @resultWord </a> <span> | </span>
-                }
-            </p>
+            @if (!string.IsNullOrWhiteSpace(Model.word) && Model.words != null)
+            {
+            
+                <p>
+                    @foreach (var resultWord in Model.words)
+                    {
+                        <a href="/Dictionary?q=@resultWord"> @resultWord </a> <span> | </span>
+                    }
+                </p>
+            
+            }
+            else
+            {
+                <div style="text-align : center" class="display-5"> We didn't found any records that match <b>"@Model.word"</b> :(</div>
+            }
+        </div>
+        <div>
+            <h1 class="display-5">Lemma - @Model.lemma</h1>
+            @if (!string.IsNullOrWhiteSpace(Model.lemma) && Model.lemmaWords != null && !Model.lemma.Equals(Model.word))
+            {
+            
+                <p>
+                    @foreach (var resultWord in Model.lemmaWords)
+                    {
+                        <a href="/Dictionary?q=@resultWord"> @resultWord </a> <span> | </span>
+                    }
+                </p>
+            
+            }
+            else if (!Model.lemma.Equals(Model.word))
+            {
+                <div style="text-align : center" class="display-5"> We didn't found any records that match <b>"@Model.lemma"</b> :(</div>
+            }
+        </div>
+        <div>
+            <h1 class="display-5">Stem - @Model.stem</h1>
+            @if (!string.IsNullOrWhiteSpace(Model.stem) && Model.stemWords != null && !Model.stem.Equals(Model.word) && !Model.stem.Equals(Model.lemma))
+            {
+            
+                <p>
+                    @foreach (var resultWord in Model.stemWords)
+                    {
+                        <a href="/Dictionary?q=@resultWord"> @resultWord </a> <span> | </span>
+                    }
+                </p>
+            
+            }
+            else if (!Model.stem.Equals(Model.word) && !Model.stem.Equals(Model.lemma))
+            {
+                <div style="text-align : center" class="display-5"> We didn't found any records that match <b>"@Model.stem"</b> :(</div>
+            }
         </div>
     }
-    else
-    {
-        <div style="text-align : center" class="display-5"> We didn't found any records that match <b>"@Model.word"</b> :(</div>
-    }
-
 </div>

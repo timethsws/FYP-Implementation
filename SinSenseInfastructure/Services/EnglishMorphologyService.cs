@@ -61,7 +61,7 @@ namespace SinSense.Infastructure.Services
             {
                 process.StartInfo = new ProcessStartInfo
                 {
-                    Arguments = arguments,
+                    Arguments = $"{filePath} {arguments}",
                     FileName = PythonExecutablePath,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,

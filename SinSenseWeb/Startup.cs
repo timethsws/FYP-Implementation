@@ -29,6 +29,10 @@ namespace SinSense.Web
             services.AddDbContext<AppDbContext>(options => Configuration.ConfigureDbContext(options, "DefaultDb"));
             services.AddScoped<GoogleTranslatorService>();
             services.AddScoped<SinhalaDictionaryService>();
+            services.AddScoped<EnglishMorphologyService>();
+            services.AddScoped<SinhalaMorphologyService>();
+            services.AddScoped<BabelNetService>();
+            services.AddScoped<SinhalaDisambiguatorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
