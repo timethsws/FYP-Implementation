@@ -8,24 +8,36 @@
         <p>Wanna find english words fr a sinhala or vice versa :)</p>
     </div>
     <div>
-        <form method="post">
-            <div class="form-group">
-                <input name="dictionary" type="text" class="form-control" id="translate_input" aria-describedby="translate_input_help" placeholder="Don't leave me empty :(">
-                <small id="translate_input_help" class="form-text text-muted">Enter the word</small>
+        <form method="get">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input name="q" type="text" class="form-control" id="translate_input" aria-describedby="translate_input_help" placeholder="Enter the word">
+                    </div>
+                </div>
+                <div class="col col-sm-1">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Do the magic :)</button>
         </form>
     </div>
-    @if(!string.IsNullOrWhiteSpace(Model.word))
+    <hr/>
+    <br/>
+    @if(!string.IsNullOrWhiteSpace(Model.word) && Model.words != null)
     {
         <div>
-        <h1 class="display-5">Results</h1>
-        <h1 class="display-6">@Model.word</h1>
-        @foreach(var resultWord in Model.words)
-        {
-            <p>@resultWord</p>
-        }
-    </div>
+            <h1 class="display-5">@Model.word</h1>
+            <p>
+                @foreach(var resultWord in Model.words)
+                {
+                    <a href="/Dictionary?q=@resultWord"> @resultWord </a> <span> | </span>
+                }
+            </p>
+        </div>
     }
-    
+    else
+    {
+        <div style="text-align : center" class="display-5"> We didn't found any records that match <b>"@Model.word"</b> :(</div>
+    }
+
 </div>

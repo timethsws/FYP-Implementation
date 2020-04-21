@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using SinSense.Core.Models;
+
 namespace SinSense.Infastructure.Services
 {
     public class SinhalaDisambiguatorService
@@ -24,6 +29,22 @@ namespace SinSense.Infastructure.Services
             this.BabelNetService = BabelNetService;
         }
 
-        public 
+        public DisambiguationResponse Disambiguate(string sentence)
+        {
+            var tokenizeRegex = new Regex("[\\p{L}\\p{M}\\u200d]+|[^\\p{L}\\p{M}]+");
+
+            var sinhalaTokens = new List<WordToken>();
+            foreach (Match match in tokenizeRegex.Matches(sentence))
+            {
+                sinhalaTokens.Add(new WordToken { Content = match.Value });
+            }
+
+            var englishTranslation = translatorService.Translate(sentence);
+
+            foreach (var token in sinhalaTokens.Where(t => t.IsWord))
+            {
+
+            }
+        }
     }
 }

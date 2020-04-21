@@ -22,16 +22,12 @@ namespace SinSense.Web.Pages.Dictionary
         {
             this.sinhalaDictionary = sinhalaDictionary;
         }
-        public void OnGet()
+        public IActionResult OnGet(string q)
         {
-        }
-
-        public IActionResult OnPost()
-        {
-            var wordStr = Request.Form["dictionary"];
-            if (!string.IsNullOrWhiteSpace(wordStr))
+            word = q;
+            if (!string.IsNullOrWhiteSpace(q))
             {
-                words = sinhalaDictionary.GetWords(wordStr);
+                words = sinhalaDictionary.GetWords(q);
             }
             return Page();
         }

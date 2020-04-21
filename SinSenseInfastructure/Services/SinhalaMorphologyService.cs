@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Core.Entities;
+using SinSense.Core.Entities;
 
 namespace SinSense.Infastructure.Services
 {
