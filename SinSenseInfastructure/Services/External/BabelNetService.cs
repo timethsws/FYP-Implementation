@@ -34,6 +34,7 @@ namespace SinSense.Infastructure.Services.External
 
         public List<KeyValuePair<string, string>> GetSenses(string sentence)
         {
+            Console.WriteLine($"Sentence : {sentence}");
             var tokens = sentence.Split(' ');
             var babelifySenses = GetBabelifyResponse(sentence);
 
