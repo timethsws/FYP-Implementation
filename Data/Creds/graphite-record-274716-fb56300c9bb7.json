@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "graphite-record-274716",
+  "private_key_id": "fb56300c9bb72ff08f2125bdc56ae23c7f040ab7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqwJTOAru4z5mM\nr/mgzWsBjrRwTb7942V1TaZJIB+uXUDoeG7UkOyszBkEeneBSkBVUIAhbcI5mCqS\n7CYhrG57ciO/3/VcX47Q6npDofrqQEvLr1QINtlobH+Wvsn5JP/zI1xYbkRmKcU1\nPQGahbctdVCoKwgXSjzQoCcac6xWLFIYaJnxmo02tu1ujMqS76D05dYOnjDdy6ff\nDTNWW4LDV3fRCUDSUFwRuRvG2G+g1WSfgTtmiNjTtvxRwxK7j2ij4dKkhm9DdHf2\n3MmZ2mJ9w2fwrmm9wAxDLoFYBjovD2FG2AbxATeM+hFd+o4/JQVTV+M0+F7/DTvW\nqNwJ2S3/AgMBAAECggEAAmvPoyorSU8gB883Flx3/+1ypC5O+U2+ODh/BmAfQuDg\nZB5JSAVwSAfJL2EKspPw66TEEYRVsdZemv6nzNGM82AmgNp9qT4W68P19mFdKB6D\nkNri5krMzqv674M7N2PXAVwwcDmeZCLs9UBDsrQe2i97ZYDtDS3XvXD4X8vKnsAo\n9dgSOXlW8XhvysnHXgdxomz04FiqW9FRKDd4deIq1krePDG7dipJgdI9OcjITMhi\nzqxIMXPdVhq+kVSR9xOCv0Bijrjr3PaCpK36zEO41sGY2uHqVm5NHamASAJsjo0c\nrrY0ORFboZgJ4BwlzHsJkaB2j62hi6kWaVUsOs+rOQKBgQDaucfdQePvIqQyXVuk\nwEDYT/D15ZS1ZRtobCFK7FA19pYWrTjQyJhCZIrA6NEzxxlCMQQ0wRRgPL/S7h5D\n1tejUNGqYZcxtVAxWkEE6qJuzVZJg6tDiAQbI4XPKePYlzXMZXy/Y/igAoC8qQIc\n8oGro1OjsTm5dbqfiGhFAABytwKBgQDH2eQwJsVOUAIlOLRsQ0NQrGj9t0pBGvdt\ndkwqe2vaoTqLowRZJvc0P064RFpkLuoVYu8Q0LDBZDq4ztv2O0J8ijq5VRLom4u3\nUpUGav9qjz1ZFfcObDOk5628NVA1CTTn5A23MaeyCpnzvDdFRGcFdwfZvXaBNI7E\ns+Ak9YE2+QKBgERpKxwHCdW3zgd6r7k98Io3prQiVHrP3tywRVF7zDK0p4j8MPMM\naqMJc2SW7Sf2s+3CCwC9CzR2i8DbfVfWkKeiFZHm6DVB8o0dH4z8HkXtr3la12xN\n1Irwd1+uSHdsBAWkEHqEODVD0yQu8FxBdVFLylM+kUFykyZmscYzE/DNAoGAJg6Y\nJZM8f208+1mRAgzNBM/QLoB442z/MRkV6AEYyMlrHKwuZ8vDx29GzlA15l4ItYnh\nfJJBFpK/m/HIcVtXjd/EzwYkU6dLM93GAzLc8K3WQOCt61EvhHeZ3f1JCNB4ArCq\n6/fIt17NclylKcuc0q2YER7DMleP2GVoiaE2ugECgYEA11BBMLWD0DKTf0n10U2n\n6phCjdfeQCgt7vx6EBvFeQVxElXjcnHrbusKoaO4+H2YDrB4kqkI1NjSVYGZDNij\nsCKEnK9ZVja6ZkOqZTLs/AJ3aEA1tqj08VmTWBK5qURArsoS/M7o0IH73QTl1ICw\nUcp28Rl/058xpudzhZnTH+w=\n-----END PRIVATE KEY-----\n",
+  "client_email": "translate@graphite-record-274716.iam.gserviceaccount.com",
+  "client_id": "100759320066097374566",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/translate%40graphite-record-274716.iam.gserviceaccount.com"
+}
