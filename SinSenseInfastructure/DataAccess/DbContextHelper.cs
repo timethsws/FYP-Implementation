@@ -30,9 +30,11 @@ namespace SinSense.Infastructure
 
             var connectionString = appConfiguration.GetConnectionString(dbConfig);
 
-            if (dbConfig.StartsWith("SqlServer", StringComparison.InvariantCultureIgnoreCase))
+            if (dbConfig.StartsWith("SQLServer", StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new NotImplementedException("SQL Server is not supported at the moment");
+                builder.UseSqlServer(connectionString, options =>
+                              options.MigrationsAssembly("SinSense.SQLServer"));
+                return;
             }
 
             if (dbConfig.StartsWith("SQLite", StringComparison.InvariantCultureIgnoreCase))
