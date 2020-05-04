@@ -74,7 +74,7 @@ namespace SinSense.SQLServer.Migrations
                     b.HasOne("SinSense.Core.Entities.Word", "FromWord")
                         .WithMany("Relations")
                         .HasForeignKey("FromWordId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("SinSense.Core.Entities.Word", "ToWord")

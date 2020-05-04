@@ -36,8 +36,7 @@ namespace SinSense.SQLServer.Migrations
                         name: "FK_WordRelations_Words_FromWordId",
                         column: x => x.FromWordId,
                         principalTable: "Words",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_WordRelations_Words_ToWordId",
                         column: x => x.ToWordId,

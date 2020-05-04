@@ -10,7 +10,7 @@ using SinSense.Infastructure;
 namespace SinSense.SQLServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200504070901_Initial Migration")]
+    [Migration("20200504085514_Initial Migration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace SinSense.SQLServer.Migrations
                     b.HasOne("SinSense.Core.Entities.Word", "FromWord")
                         .WithMany("Relations")
                         .HasForeignKey("FromWordId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("SinSense.Core.Entities.Word", "ToWord")

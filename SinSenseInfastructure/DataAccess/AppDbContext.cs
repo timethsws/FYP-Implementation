@@ -36,7 +36,7 @@ namespace SinSense.Infastructure
         {
             // Relationships
             modelBuilder.Entity<WordRelation>().HasOne(wr => wr.ToWord);
-            modelBuilder.Entity<WordRelation>().HasOne(wr => wr.FromWord).WithMany(w => w.Relations);
+            modelBuilder.Entity<WordRelation>().HasOne(wr => wr.FromWord).WithMany(w => w.Relations).OnDelete(DeleteBehavior.NoAction);
 
             // TODO : Db Optimaisations
             modelBuilder.Entity<Word>().HasKey(w => w.Id);
