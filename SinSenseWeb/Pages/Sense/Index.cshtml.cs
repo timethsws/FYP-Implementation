@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SinSense.Core.Models;
 using SinSense.Infastructure.Services;
+using SinSense.Infastructure.Services.Sinhala;
 
 namespace SinSense.Web.Pages.Sense
 {

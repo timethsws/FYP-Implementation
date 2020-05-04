@@ -19,5 +19,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Services\NLP\" />
+    <Folder Include="Services\NLP\English\" />
+    <Folder Include="Services\External\" />
+    <Folder Include="Services\NLP\Sinhala\" />
+    <Folder Include="DataAccess\" />
+    <Folder Include="Services\Helpers\" />
   </ItemGroup>
 </Project>

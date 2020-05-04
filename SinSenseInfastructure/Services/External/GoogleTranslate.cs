@@ -3,14 +3,17 @@ using Google.Api.Gax.ResourceNames;
 using Google.Cloud.Translate.V3;
 using Microsoft.Extensions.Configuration;
 
-namespace SinSense.Infastructure.Services
+namespace SinSense.Infastructure.Services.External
 {
-    public class GoogleTranslatorService
+    /// <summary>
+    /// Google Translate API Wrapper
+    /// </summary>
+    public class GoogleTranslateService
     {
         private readonly TranslationServiceClient translationServiceClient;
         private readonly string ProjectId;
 
-        public GoogleTranslatorService(IConfiguration configuration)
+        public GoogleTranslateService(IConfiguration configuration)
         {
             var clientBuilder = new TranslationServiceClientBuilder()
             {
@@ -21,7 +24,13 @@ namespace SinSense.Infastructure.Services
 
         }
 
-        public string Translate (string text, string targetLanguage = "en")
+        /// <summary>
+        /// Translates a given to text to target language (Should be supported by google translate
+        /// </summary>
+        /// <param name="text">Text to translate</param>
+        /// <param name="targetLanguage"> Language to translate to</param>
+        /// <returns>Translated Text</returns>
+        public string Translate(string text, string targetLanguage = "en")
         {
             TranslateTextRequest request = new TranslateTextRequest
             {
@@ -30,7 +39,7 @@ namespace SinSense.Infastructure.Services
                 ParentAsLocationName = new LocationName(ProjectId, "global"),
             };
             TranslateTextResponse response = translationServiceClient.TranslateText(request);
-            
+
             return response.Translations[0].TranslatedText;
         }
     }

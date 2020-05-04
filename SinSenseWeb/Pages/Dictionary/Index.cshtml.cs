@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SinSense.Core.Entities;
 using SinSense.Infastructure.Services;
+using SinSense.Infastructure.Services.Sinhala;
 
 namespace SinSense.Web.Pages.Dictionary
 {
@@ -29,7 +31,7 @@ namespace SinSense.Web.Pages.Dictionary
         [BindProperty]
         public List<string> stemWords { get; set; }
 
-        public IndexModel(SinhalaDictionaryService sinhalaDictionary,SinhalaMorphologyService sinhalaMorphologyService)
+        public IndexModel(SinhalaDictionaryService sinhalaDictionary, SinhalaMorphologyService sinhalaMorphologyService)
         {
             this.sinhalaDictionary = sinhalaDictionary;
             this.sinhalaMorphologyService = sinhalaMorphologyService;
@@ -39,18 +41,18 @@ namespace SinSense.Web.Pages.Dictionary
             word = q;
             if (!string.IsNullOrWhiteSpace(word))
             {
-                words = sinhalaDictionary.GetWords(word);
-                lemma = sinhalaMorphologyService.GetLemma(word);
-                stem = sinhalaMorphologyService.GetStem(word);
+                words = sinhalaDictionary.GetWords(word, Language.English);
+                lemma = sinhalaMorphologyService.LemmetizeWord(word);
+                stem = sinhalaMorphologyService.StemWord(word);
 
-                if(!lemma.Equals(word))
+                if (!lemma.Equals(word))
                 {
-                    lemmaWords = sinhalaDictionary.GetWords(lemma);
+                    lemmaWords = sinhalaDictionary.GetWords(lemma, Language.English);
                 }
 
                 if (!stem.Equals(word) && !stem.Equals(lemma))
                 {
-                    stemWords = sinhalaDictionary.GetWords(stem);
+                    stemWords = sinhalaDictionary.GetWords(stem, Language.English);
                 }
             }
             return Page();

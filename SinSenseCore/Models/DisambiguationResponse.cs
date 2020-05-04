@@ -10,11 +10,11 @@ namespace SinSense.Core.Models
 
         public string Translation { get; set; }
 
-        public List<WordToken> Tokens { get; set; }
+        public List<SentenceToken> Tokens { get; set; }
 
     }
 
-    public class WordToken
+    public class SentenceToken
     {
         static readonly Regex HasSymbol = new Regex("[^\\p{L}\\p{M}\\u200d]");
 

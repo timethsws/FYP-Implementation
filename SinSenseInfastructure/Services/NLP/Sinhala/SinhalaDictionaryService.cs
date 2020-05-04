@@ -4,11 +4,16 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SinSense.Core.Entities;
+using SinSense.Core.Interfaces;
 
-namespace SinSense.Infastructure.Services
+namespace SinSense.Infastructure.Services.Sinhala
 {
-    public class SinhalaDictionaryService
+    public class SinhalaDictionaryService : IDictionaryService
     {
+
+        public Language SourceLanguage => Language.Sinhala;
+        public Language[] TargetLanguages { get; } = { Language.English };
+
         private readonly AppDbContext dbContext;
         private readonly ILogger<SinhalaDictionaryService> logger;
 
@@ -18,8 +23,13 @@ namespace SinSense.Infastructure.Services
             this.logger = logger;
         }
 
-        public List<string> GetWords (string word)
+        public List<string> GetWords(string word, Language TargetLanguage)
         {
+            if(!TargetLanguages.Any(l => l == TargetLanguage))
+            {
+                throw new ApplicationException("Target Language is not supported");
+            }
+
             // Check of the word exists in the database
             if (!dbContext.Words.Any(w => w.Text.Equals(word)))
             {

@@ -7,20 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SinSense.Infastructure.Services;
+using SinSense.Infastructure.Services.External;
 
 namespace SinSense.Web.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly GoogleTranslatorService _translaterService;
+        private readonly GoogleTranslateService _translaterService;
 
         [BindProperty]
         public String text { get; set; }
 
         [BindProperty]
         public string translated { get; set; }
-        public IndexModel(ILogger<IndexModel> logger,GoogleTranslatorService translaterService)
+        public IndexModel(ILogger<IndexModel> logger,GoogleTranslateService translaterService)
         {
             _logger = logger;
             _translaterService = translaterService;
