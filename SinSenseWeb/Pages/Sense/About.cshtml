@@ -1,0 +1,55 @@
+﻿@page
+@{
+}
+
+<div>
+    <div class="text-center">
+        <h1 class="display-4">About Sin-Sense</h1>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">How does it works ?</h5>
+
+            <h6>Background on the issue </h6>
+            Word Sense Disambiguation is a hard task and it's almost impossible for a language like Sinhala because of the
+            unavailability of resources like
+            <ul>
+                <li>Morphological Analyzer</li>
+                <li>Electronic Dictionary with gloss</li>
+                <li>A Word Net :(</li>
+            </ul>
+            Or many of these available resources are closed sourced.
+            You can read a <a href="https://www.researchgate.net/publication/333649787_Survey_on_Publicly_Available_Sinhala_Natural_Language_Processing_Tools_and_Research"> review </a>
+            done by Nisansa De Silva in 2019 about Sinhala NLP tools to get a proper idea about the issue.
+            <br />
+            <br />
+            Because of that the typical approach using Machine Learning was not possible. But since WSD for English language is advanced and there
+            is a nice web service named <a href="http://babelfy.org">Babelfy</a> with a pretty UI. Go check it out !!. It's cool :)
+            And also translating text from Sinhala and English is easy. So there comes the saviour <b>Crosslingual WSD</b>.
+            <br />
+
+            <br />
+            <h6>So here's how it happens</h6>
+            <b>Step 1</b> : The input is translated and sent to babelfy for disambiguation <br />
+            <b>Step 2</b> : The Sentence is tokenized and all words are turned to their lemmas (ie අම්මාගේ -> අම්මා) <br />
+            <b>Step 3</b> : After the senses are retrived all the English words are also tokenized and lemmatizes and their respective senses are mapped to the word <br />
+            <b>Step 4</b> : All the english words related to each sinhala word are taken <br />
+            <b>Step 5</b> : Senses from the babelfy are mapped according to the words related to each sinhala word <br />
+
+            <br />
+            <h6>Identified Limitations</h6>
+            <ul>
+                <li>
+                    If there is two words with same english word in their dictionary entries both words will assume the english words sense.
+                </li>
+                <li>
+                    If there are two english words which matches with one sinhala word first english words is identified as the mapping word which is not always correct.
+                </li>
+                <li>
+                    All the word's will not get disambiguated. Theoretically this has better vocabulary than exsisting WSD research for Sinhala :P
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

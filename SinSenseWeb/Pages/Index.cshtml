@@ -6,18 +6,51 @@
 
 <div class="container">
     <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <h2 class="display-6">Havin' truoble with understanding sinhala :(</h2>
+        <h1 class="display-4">Welcome to Sin-Sense</h1>
+        <h2 class="display-6">An Sinhala NLP service focused on Sinhala Word Sense Disambiguation and other NLP tools</h2>
     </div>
     <div>
-        <form method="post">
-            <div class="form-group">
-                <input name="translate" type="text" class="form-control" id="translate_input" aria-describedby="translate_input_help" placeholder="පරිවර්තනය කිර්‍රමට අවශ්‍යය වාක්‍යය ඇතුලු කරන්න">
-                <small id="translate_input_help" class="form-text text-muted">Enter the text you want to translate</small>
+        <br/>
+        <h3> Available Tools</h3>
+        <dlv class="row" style="padding-bottom:10px">
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-body h-100">
+                        <h5 class="card-title text-center">Sinhala WSD</h5>
+                        <p class="card-text">This tool can be used to dismbiguate Sinhala Nouns in a sentence</p>
+                        <a asp-page="/Sense/Index" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Translate :)</button>
-        </form>
-        <p> @Model.text</p>
-        <p> @Model.translated</p>
+            <div class="col-md">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Sinhala English Dictionary</h5>
+                        <p class="card-text">Coming Soon</p>
+                        <!--<a asp-page="/Dictionary/Index" class="btn btn-primary">Go somewhere</a>-->
+                    </div>
+                </div>
+            </div>
+        </dlv>
+        <dlv class="row" style="padding-bottom:10px">
+            <div class="col-md">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Sinhala Morphological Analyzer</h5>
+                        <p class="card-text">Coming Soon</p>
+                        <!--<a asp-page="/Dictionary/Index" class="btn btn-primary">Go somewhere</a>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">SiEn Translator</h5>
+                        <p class="card-text">Coming Soon</p>
+                        <!--<a asp-page="/Dictionary/Index" class="btn btn-primary">Go somewhere</a>-->
+                    </div>
+                </div>
+            </div>
+        </dlv>
     </div>
 </div>

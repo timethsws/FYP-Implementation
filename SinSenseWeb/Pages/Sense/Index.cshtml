@@ -5,18 +5,19 @@
 
 <div class="container">
     <div class="text-center">
-        <h1 class="display-4">Sinhala Sense Disambiguation</h1>
-        <p>Identify contextual sense of polysemous Sinhala words</p>
+        <h1 class="display-4">Sinhala Word Sense Disambiguation</h1>
+        <p>Disambiguate polysemous sinhala nouns given the context</p>
+        <p style="color:gray; font-size:0.8rem">DISCLAIMER : This service is a work in progress 100% accuracy is not guaranteed</p>
     </div>
     <div>
         <form method="get">
-            <div class="row">
-                <div class="col">
+            <div class="row justify-content-md-center">
+                <div class="col-md">
                     <div class="form-group">
-                        <input name="q" type="text" class="form-control" id="translate_input" aria-describedby="translate_input_help" placeholder="Enter the word">
+                        <input name="q" type="text" class="form-control" id="translate_input" aria-describedby="translate_input_help" placeholder="Enter the Sentence">
                     </div>
                 </div>
-                <div class="col col-sm-1">
+                <div class="col-md-1">
                     <button type="submit" class="btn btn-primary">Disambiguate</button>
                 </div>
             </div>

@@ -37,5 +37,7 @@
   <ItemGroup>
     <Folder Include="Pages\Sense\" />
     <Folder Include="Pages\Dictionary\" />
+    <Folder Include="Pages\API\" />
+    <Folder Include="Pages\Morphology\" />
   </ItemGroup>
 </Project>
