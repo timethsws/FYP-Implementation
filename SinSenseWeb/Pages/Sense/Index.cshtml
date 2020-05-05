@@ -7,8 +7,9 @@
     <div class="text-center">
         <h1 class="display-4">Sinhala Word Sense Disambiguation</h1>
         <p>Disambiguate polysemous sinhala nouns given the context</p>
-        
+        <p style="color:darkblue; font-size:0.8rem">Sample sentences "මුව රංචුව කැලයට වැදුනි.", "ඇය තම මුව අත්ලෙන් වසා ගත්තාය.", "එවැනි රක්ෂණ පවත්වාගෙන යාම වැළැක්වීමට නීති ඇති අතර එය සාමාන්‍යයෙන් නීති විරෝධී ක්‍රියාවකි", "න්‍යායානුකූලව ටික දෙනෙකුගේ ඉල්ලීම් සහ ව්‍යාපාරික වියදම් පිරිමැහෙන්නේ බොහෝ දෙනෙක් රක්ෂණ වාරික පසුව ලබාගන්නා තෙක් ගෙවනු ලබන නිසාය." </p>
         <p style="color:gray; font-size:0.8rem">DISCLAIMER : This service is a work in progress 100% accuracy is not guaranteed</p>
+        
     </div>
     <div>
         <form method="get">
@@ -39,10 +40,9 @@
                 }
             }
         </h5>
-        <p>@Model.res.Translation</p>
         @foreach (var token in Model.res.Tokens)
         {
-            @if(token.IsWord && token.Sense != null)
+            @if(token.IsWord && token.Sense != null && token.Sense.EnglishWord != null)
             {
                 <h4>@token.Content - @token.Sense.EnglishWord</h4>
                 <p>@token.Sense.Gloss</p>

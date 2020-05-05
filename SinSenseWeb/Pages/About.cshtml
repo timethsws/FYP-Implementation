@@ -5,45 +5,35 @@
     <div class="text-center">
         <h1 class="display-4">About Sin-Sense</h1>
     </div>
-    <div class="card">
+    <div class="card" style="margin:10px">
         <div class="card-body">
-            <h5 class="card-title text-center">How does it works ?</h5>
-            <h6>What is Word Sense Disambiguation</h6>
+            <h5 class="card-title">What is Word Sense Disambiguation (WSD)</h5>
             Let's take two sentences
             <ul>
                 <li>මුව රංචුව කැලයට වැදුනි.</li>
                 <li>ඇය තම මුව අත්ලෙන් වසා ගත්තාය.</li>
             </ul>
-            in these sentences the word "මුව" has too meanings one being deer and the other one meaning mouth
-
-            <h6>Background on the issue </h6>
-            Word Sense Disambiguation is a hard task and it's almost impossible for a language like Sinhala because of the
-            unavailability of resources like
+            in these sentences the word "මුව" has too meanings "deer" and "mouth" respectively. WSD is essentially
+            a way for a computer to understand the intended meaning/sense of the word in a given context.
+        </div>
+    </div>
+    <div class="card" style="margin:10px">
+        <div class="card-body">
+            <h5 class="card-title">How does it works ?</h5>
+            Sin-Sense uses crosslingual approach to WSD with the support of babelfy (an English WSD service) because the less
+            resource availability for sinhala language
             <ul>
-                <li>Morphological Analyzer</li>
-                <li>Electronic Dictionary with gloss</li>
-                <li>A Word Net :(</li>
+                <li><b>Step 1</b> : The input is translated and sent to babelfy for disambiguation <br /></li>
+                <li><b>Step 2</b> : The Sentence is tokenized and all words are turned to their lemmas (ie අම්මාගේ -> අම්මා) <br /></li>
+                <li><b>Step 3</b> : After the senses are retrived all the English words are also tokenized and lemmatizes and their respective senses are mapped to the word <br /></li>
+                <li><b>Step 4</b> : All the english words related to each sinhala word are taken <br /></li>
+                <li><b>Step 5</b> : Senses from the babelfy are mapped according to the words related to each sinhala word <br /></li>
             </ul>
-            Or many of these available resources are closed sourced.
-            You can read a <a href="https://www.researchgate.net/publication/333649787_Survey_on_Publicly_Available_Sinhala_Natural_Language_Processing_Tools_and_Research"> review </a>
-            done by Nisansa De Silva in 2019 about Sinhala NLP tools to get a proper idea about the issue.
-            <br />
-            <br />
-            Because of that the typical approach using Machine Learning was not possible. But since WSD for English language is advanced and there
-            is a nice web service named <a href="http://babelfy.org">Babelfy</a> with a pretty UI. Go check it out !!. It's cool :)
-            And also translating text from Sinhala and English is easy. So there comes the saviour <b>Crosslingual WSD</b>.
-            <br />
-
-            <br />
-            <h6>So here's how it happens</h6>
-            <b>Step 1</b> : The input is translated and sent to babelfy for disambiguation <br />
-            <b>Step 2</b> : The Sentence is tokenized and all words are turned to their lemmas (ie අම්මාගේ -> අම්මා) <br />
-            <b>Step 3</b> : After the senses are retrived all the English words are also tokenized and lemmatizes and their respective senses are mapped to the word <br />
-            <b>Step 4</b> : All the english words related to each sinhala word are taken <br />
-            <b>Step 5</b> : Senses from the babelfy are mapped according to the words related to each sinhala word <br />
-
-            <br />
-            <h6>Identified Limitations</h6>
+        </div>
+    </div>
+    <div class="card" style="margin:10px">
+        <div class="card-body">
+            <h5 class="card-title">Identified Limitations</h5>
             <ul>
                 <li>
                     If there is two words with same english word in their dictionary entries both words will assume the english words sense.
@@ -56,6 +46,21 @@
                 </li>
             </ul>
         </div>
-
+    </div>
+    <div class="card" style="margin:10px">
+        <div class="card-body">
+            <h5 class="card-title">Future enhancements</h5>
+            <ul>
+                <li>
+                    At the moment the POS of words are not considerd because of data set limitations. This will be the next important step to enhance the accuaracy of word mapper.
+                </li>
+                <li>
+                    The dictionary source need to be updated
+                </li>
+                <li>
+                    Dependancy on Google translate and Babelfy need to be removed, Maybe get thier permission to use the dataset.
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
